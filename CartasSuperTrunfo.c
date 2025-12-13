@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
@@ -8,18 +10,18 @@ int main() {
   // Área para definição das variáveis para armazenar as propriedades das cidades
   // Variáveis da carta 1
   char Carta1_Estado;
-  char Carta1_Codigo[4];
+  char Carta1_Codigo[5];
   char Carta1_Cidade [30];
-  int Carta1_Popoulacao;
+  int Carta1_Populacao;
   float Carta1_Area;
   float Carta1_PIB;
   int Carta1_Pontos; 
 
   // Variáveis da carta 2
   char Carta2_Estado;
-  char Carta2_Codigo[4];
+  char Carta2_Codigo[5];
   char Carta2_Cidade [30];
-  int Carta2_Popoulacao;
+  int Carta2_Populacao;
   float Carta2_Area;
   float Carta2_PIB;
   int Carta2_Pontos; 
@@ -33,28 +35,26 @@ int main() {
   scanf("%c", &Carta1_Estado);
   // aqui precisei pesquisar uma solução para limpar o enter do buffer para que
   // o proximo fgets não capture o \n impedindo a leitura do usuário
-  // fpurge limpa o buffer com o \n
-  __fpurge(stdin);
+  // getchar limpa o buffer com o \n
+  getchar();
   
   //Codigo
   printf("Insira o código da Carta (A letra do estado seguida de um número de 01 a 04)\n");
-  fgets(Carta1_Codigo, 4, stdin);
+  fgets(Carta1_Codigo, 5, stdin);
   // retirando o enter do final do código
   Carta1_Codigo[strcspn(Carta1_Codigo, "\n")] = 0;
-  // limpa o buffer
-  __fpurge(stdin);
+  
 
   //Cidade
-  printf("Isira o nome da Cidade)\n");
+  printf("Insira o nome da Cidade\n");
   fgets(Carta1_Cidade, 30, stdin);
   // retirando o enter do final da Cidade
   Carta1_Cidade[strcspn(Carta1_Cidade, "\n")] = 0;
-  // limpa o buffer
-  __fpurge(stdin);
+
   
   //População
   printf("Insira o número de habitantes\n");
-  scanf("%d", &Carta1_Popoulacao);
+  scanf("%d", &Carta1_Populacao);
 
   //Area
   printf("Insira a área da cidade em quilômetros quadrados\n");
@@ -74,28 +74,26 @@ int main() {
   // Estado
   printf("Insira o Estado Carta (Apenas uma letra de 'A' a 'H')\n");
   scanf(" %c", &Carta2_Estado);
-  // fpurge limpa o buffer com o \n
-  __fpurge(stdin);
+  // getchar limpa o buffer com o \n
+  getchar();
   
   //Codigo
   printf("Insira o código da Carta (A letra do estado seguida de um número de 01 a 04)\n");
-  fgets(Carta2_Codigo, 4, stdin);
+  fgets(Carta2_Codigo, 5, stdin);
   // retirando o enter do final do código
   Carta2_Codigo[strcspn(Carta2_Codigo, "\n")] = 0;
-  // limpa o buffer
-  __fpurge(stdin);
+
 
   //Cidade
-  printf("Insira o nome da Cidade)\n");
+  printf("Insira o nome da Cidade\n");
   fgets(Carta2_Cidade, 30, stdin);
   // retirando o enter do final da Cidade
   Carta2_Cidade[strcspn(Carta2_Cidade, "\n")] = 0;
-  // limpa o buffer
-  __fpurge(stdin);
+
   
   //População
   printf("Insira o número de habitantes\n");
-  scanf("%d", &Carta2_Popoulacao);
+  scanf("%d", &Carta2_Populacao);
 
   //Area
   printf("Insira a área da cidade em quilômetros quadrados\n");
@@ -116,9 +114,9 @@ int main() {
   printf("| Estado: %c\n", Carta1_Estado);
   printf("| Código: %s\n", Carta1_Codigo);
   printf("| Cidade: %s\n", Carta1_Cidade);
-  printf("| População: %d\n", Carta1_Popoulacao);
-  printf("| Area: %f\n", Carta1_Area);
-  printf("| PIB: %f\n", Carta1_PIB);
+  printf("| População: %d\n", Carta1_Populacao);
+  printf("| Area: %.2f Km2\n", Carta1_Area);
+  printf("| PIB: %.2f bilhões\n", Carta1_PIB);
   printf("| Pontos Turísticos: %d\n", Carta1_Pontos);
   printf(" ------ ******** -------\n\n");
 
@@ -127,9 +125,9 @@ int main() {
   printf("| Estado: %c\n", Carta2_Estado);
   printf("| Código: %s\n", Carta2_Codigo);
   printf("| Cidade: %s\n", Carta2_Cidade);
-  printf("| População: %d\n", Carta2_Popoulacao);
-  printf("| Area: %f\n", Carta2_Area);
-  printf("| PIB: %f\n", Carta2_PIB);
+  printf("| População: %d\n", Carta2_Populacao);
+  printf("| Area: %.2f Km2\n", Carta2_Area);
+  printf("| PIB: %.2f bilhões\n", Carta2_PIB);
   printf("| Pontos Turísticos: %d\n", Carta2_Pontos);
   printf(" ------ ******** -------\n\n");
 
