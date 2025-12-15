@@ -12,23 +12,27 @@ int main() {
   char Carta1_Estado;
   char Carta1_Codigo[5];
   char Carta1_Cidade [30];
-  int Carta1_Populacao;
+  unsigned long int Carta1_Populacao;
   float Carta1_Area;
   float Carta1_PIB;
   int Carta1_Pontos; 
   // Desafio Aventureiro
   float Carta1_DensidadePopulacional, Carta1_PIBPerCapita;
+  //Desafio Mestre
+  float Carta1_SuperPoder;
 
   // Variáveis da carta 2
   char Carta2_Estado;
   char Carta2_Codigo[5];
   char Carta2_Cidade [30];
-  int Carta2_Populacao;
+  unsigned long int Carta2_Populacao;
   float Carta2_Area;
   float Carta2_PIB;
   int Carta2_Pontos; 
   //Desafio Aventureiro
   float Carta2_DensidadePopulacional, Carta2_PIBPerCapita;
+  //Desafio Mestre
+  float Carta2_SuperPoder;
 
 
   // Área para entrada de dados
@@ -37,7 +41,7 @@ int main() {
   printf("--------- CADASTRO DA CARTA 01 --------\n");
   // Estado
   printf("Insira o Estado Carta (Apenas uma letra de 'A' a 'H')\n");
-  scanf("%c", &Carta1_Estado);
+  scanf(" %c", &Carta1_Estado);
   // aqui precisei pesquisar uma solução para limpar o enter do buffer para que
   // o proximo fgets não capture o \n impedindo a leitura do usuário
   // getchar limpa o buffer com o \n
@@ -59,7 +63,7 @@ int main() {
   
   //População
   printf("Insira o número de habitantes\n");
-  scanf("%d", &Carta1_Populacao);
+  scanf("%lu", &Carta1_Populacao);
 
   //Area
   printf("Insira a área da cidade em quilômetros quadrados\n");
@@ -78,6 +82,11 @@ int main() {
   Carta1_DensidadePopulacional = (float)  Carta1_Populacao / Carta1_Area;
   //Multiplica o PIB por 1 bilhão, já que a leitura é referente a bilhões
   Carta1_PIBPerCapita = (float) (Carta1_PIB * 1000000000) / Carta1_Populacao;
+
+  //Desafio Mestre
+  //aqui dividi 1 pela densidade para pegar o inverso da densidade
+  Carta1_SuperPoder = (float) Carta1_Populacao + Carta1_Area + Carta1_PIB + Carta1_Pontos +
+                        Carta1_PIBPerCapita + ((float) 1 / Carta1_DensidadePopulacional);
   
 
 
@@ -105,7 +114,7 @@ int main() {
   
   //População
   printf("Insira o número de habitantes\n");
-  scanf("%d", &Carta2_Populacao);
+  scanf("%lu", &Carta2_Populacao);
 
   //Area
   printf("Insira a área da cidade em quilômetros quadrados\n");
@@ -126,18 +135,24 @@ int main() {
   Carta2_PIBPerCapita = (float) (Carta2_PIB * 1000000000) / Carta2_Populacao;
 
 
+  //Desafio Mestre
+  Carta2_SuperPoder = (float) Carta2_Populacao + Carta2_Area + Carta2_PIB + Carta2_Pontos +
+                        Carta2_PIBPerCapita + ((float) 1 / Carta2_DensidadePopulacional);
+
+
   // Área para exibição dos dados da cidade
   // Exibição Carta 1
   printf("\n ------ CARTA 01 -------\n");
   printf("| Estado: %c\n", Carta1_Estado);
   printf("| Código: %s\n", Carta1_Codigo);
   printf("| Cidade: %s\n", Carta1_Cidade);
-  printf("| População: %d\n", Carta1_Populacao);
+  printf("| População: %lu\n", Carta1_Populacao);
   printf("| Area: %.2f Km2\n", Carta1_Area);
   printf("| PIB: %.2f bilhões\n", Carta1_PIB);
   printf("| Pontos Turísticos: %d\n", Carta1_Pontos);
   printf("| Densidade Populacional: %.2f hab/km2\n", Carta1_DensidadePopulacional);
   printf("| PIB Per Capita: %.2f reais\n", Carta1_PIBPerCapita);
+  printf("| Super Poder: %.2f \n", Carta1_SuperPoder);
   printf(" ------ ******** -------\n\n");
 
   // Exibição Carta 2
@@ -145,13 +160,28 @@ int main() {
   printf("| Estado: %c\n", Carta2_Estado);
   printf("| Código: %s\n", Carta2_Codigo);
   printf("| Cidade: %s\n", Carta2_Cidade);
-  printf("| População: %d\n", Carta2_Populacao);
+  printf("| População: %lu\n", Carta2_Populacao);
   printf("| Area: %.2f Km2\n", Carta2_Area);
   printf("| PIB: %.2f bilhões\n", Carta2_PIB);
   printf("| Pontos Turísticos: %d\n", Carta2_Pontos);
   printf("| Densidade Populacional: %.2f hab/km2\n", Carta2_DensidadePopulacional);
   printf("| PIB Per Capita: %.2f reais\n", Carta2_PIBPerCapita);
+  printf("| Super Poder: %.2f \n", Carta2_SuperPoder);
   printf(" ------ ******** -------\n\n");
+
+  //Desafio Mestre
+  //Comparações 
+
+  printf("\n******* Comparação de Cartas *********\n");
+  printf("População: Carta 1 venceu (%d) \n", Carta1_Populacao > Carta2_Populacao);
+  printf("Área: Carta 1 venceu (%d) \n", Carta1_Area > Carta2_Area);
+  printf("PIB: Carta 1 venceu (%d) \n", Carta1_PIB > Carta2_PIB);
+  printf("Pontos Turísticos: Carta 1 venceu (%d) \n", Carta1_Pontos > Carta2_Pontos);
+  //invertendo sinal para Desidade da carta vencedora que deve ser menor
+  printf("Densidade Populacional: Carta 1 venceu (%d) \n", Carta1_DensidadePopulacional <
+                                                            Carta2_DensidadePopulacional);
+  printf("PIB per Capita: Carta 1 venceu (%d) \n", Carta1_PIBPerCapita > Carta2_PIBPerCapita);
+  printf("Super Poder: Carta 1 venceu (%d) \n\n\n", Carta1_SuperPoder > Carta2_SuperPoder);
 
 return 0;
 } 
